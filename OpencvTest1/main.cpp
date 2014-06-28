@@ -8,10 +8,12 @@ using namespace std;
 
 
 VideoCapture stream1(0);
+VideoCapture stream2(0);
 
 Mat cameraFrame1;
 Mat cameraFrame2;
-int flag;
+int ThreshLevel=20;
+int buf;
 
 
 void RectangleDetection (Mat obj, Mat color, Point a,Point b){
@@ -31,26 +33,37 @@ void RectangleDetection (Mat obj, Mat color, Point a,Point b){
 }
 
 int main() {
-    namedWindow("cam",1);
-    stream1.read(cameraFrame2);
+    stream2.read(cameraFrame2);
     while (true) {
+        
         stream1.read(cameraFrame1);
-        Mat diff = cameraFrame2 - cameraFrame1;
-        //imshow("cam1", cameraFrame1);
-        //imshow("cam2", cameraFrame2);
-        cvtColor(diff,diff,CV_RGB2GRAY);
-        
-        //Scalar colour = diff.at<uchar>(Point(100,100));
-        //if(colour.val[0]>0) cout << colour.val[0] << endl;
-        
-        threshold(diff, diff, 30, 255, CV_THRESH_BINARY);
-        //circle(diff, Point(50,50), 10, Scalar(100,100,100));
-        
-        RectangleDetection(diff, cameraFrame1,Point(80,80),Point(120,120));
-        
+        Mat diff2 = cameraFrame2 - cameraFrame1;
+        Mat diff = cameraFrame1 - cameraFrame2;
+        diff2 = (diff+diff2)/2;
+        cvtColor(diff2,diff2,CV_RGB2GRAY);
+        threshold(diff2, diff2, ThreshLevel, 255, THRESH_BINARY);
+        RectangleDetection(diff2, cameraFrame1, Point(95,95), Point(105,105));
         imshow("cam", cameraFrame1);
-        stream1.read(cameraFrame2);
-        if(waitKey(10)==27) break;
+        
+        stream2.read(cameraFrame2);
+        
+        buf = waitKey(10);
+        switch (buf) {
+            case 27:
+                stream1.release();
+                stream2.release();
+                return 0;
+                break;
+            case 63232:
+                ThreshLevel++;
+                cout << ThreshLevel << endl;
+            case 63233:
+                ThreshLevel--;
+                cout << ThreshLevel << endl;
+            default:
+                break;
+        }
+        
     }
     return 0;
 }
