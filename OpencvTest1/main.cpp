@@ -16,9 +16,10 @@ VideoCapture stream2(0);
 Mat cameraFrame1;
 Mat cameraFrame2;
 int ThreshLevel=20;
-int buf;
-
-
+int hullcount;
+int inputkey;
+vector<int> hull;
+vector<Point> points;
 
 void RectangleDetection (Mat obj, Mat color, cv::Point a,cv::Point b){
     rectangle(color, a, b, Scalar(255,0,0));
@@ -36,10 +37,7 @@ void RectangleDetection (Mat obj, Mat color, cv::Point a,cv::Point b){
 
 
 int main() {
-    
-    //Initmidi();
-    
-    
+
     stream2.read(cameraFrame2);
     while (true) {
         
@@ -50,19 +48,29 @@ int main() {
         cvtColor(diff2,diff2,CV_RGB2GRAY);
         threshold(diff2, diff2, ThreshLevel, 255, THRESH_BINARY);
         RectangleDetection(diff2, cameraFrame1, Point(95,95), Point(105,105));
+        
+//        medianBlur(cameraFrame1, cameraFrame1, 1);
+        
+//        convexHull(diff2, hull,false,true);
+//        hullcount = (int)hull.size();
+//        for(int i=0;i<hullcount;i++){
+//            Point pt0 = points[hull[i]];
+//            cv::circle(diff2, points[i], 3, Scalar(0,0,255));
+//        }
+        
+        flip(cameraFrame1, cameraFrame1, 1);
         imshow("cam", cameraFrame1);
         
-        stream2.read(cameraFrame2);
         
-        buf = waitKey(10);
-        switch (buf) {
+        inputkey = waitKey(10);
+        switch (inputkey) {
             case 27:
                 stream1.release();
                 stream2.release();
                 return 0;
                 break;
-//            case 63232://up
-//                Ho();
+            case 63232://up
+                stream2.read(cameraFrame2);
 //            case 63233://down
 //                ThreshLevel--;
 //                cout << ThreshLevel << endl;
