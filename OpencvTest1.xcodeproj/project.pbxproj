@@ -61,6 +61,10 @@
 		421F637E195DD81600BA68FB /* libopencv_videostab.2.4.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 421F6348195DD81600BA68FB /* libopencv_videostab.2.4.9.dylib */; };
 		421F637F195DD81600BA68FB /* libopencv_videostab.2.4.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 421F6349195DD81600BA68FB /* libopencv_videostab.2.4.9.dylib */; };
 		421F6380195DD81600BA68FB /* libopencv_videostab.2.4.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 421F634A195DD81600BA68FB /* libopencv_videostab.2.4.9.dylib */; };
+		42E8633A195FE1CD00F52489 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E86339195FE1CD00F52489 /* CoreMIDI.framework */; };
+		42E8633F195FF5F000F52489 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42E8633D195FF5F000F52489 /* RtMidi.cpp */; };
+		42E86341195FF73400F52489 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E86340195FF73400F52489 /* CoreAudio.framework */; };
+		42E86343195FF76A00F52489 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E86342195FF76A00F52489 /* CoreFoundation.framework */; };
 		42FD8F4A195951EC00705426 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42FD8F49195951EC00705426 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +135,12 @@
 		421F6348195DD81600BA68FB /* libopencv_videostab.2.4.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videostab.2.4.9.dylib; path = ../../../../usr/local/lib/libopencv_videostab.2.4.9.dylib; sourceTree = "<group>"; };
 		421F6349195DD81600BA68FB /* libopencv_videostab.2.4.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videostab.2.4.9.dylib; path = ../../../../usr/local/lib/libopencv_videostab.2.4.9.dylib; sourceTree = "<group>"; };
 		421F634A195DD81600BA68FB /* libopencv_videostab.2.4.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videostab.2.4.9.dylib; path = ../../../../usr/local/lib/libopencv_videostab.2.4.9.dylib; sourceTree = "<group>"; };
+		42E86339195FE1CD00F52489 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		42E8633D195FF5F000F52489 /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RtMidi.cpp; sourceTree = "<group>"; };
+		42E8633E195FF5F000F52489 /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RtMidi.h; sourceTree = "<group>"; };
+		42E86340195FF73400F52489 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		42E86342195FF76A00F52489 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		42E86344195FF9ED00F52489 /* InitMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitMidi.h; sourceTree = "<group>"; };
 		42FD8F46195951EC00705426 /* OpencvTest1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpencvTest1; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FD8F49195951EC00705426 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		42FD8F8C1959609100705426 /* libpng.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libpng.pc; sourceTree = "<group>"; };
@@ -144,6 +154,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42E86343195FF76A00F52489 /* CoreFoundation.framework in Frameworks */,
+				42E86341195FF73400F52489 /* CoreAudio.framework in Frameworks */,
+				42E8633A195FE1CD00F52489 /* CoreMIDI.framework in Frameworks */,
 				421F637C195DD81600BA68FB /* libopencv_video.2.4.9.dylib in Frameworks */,
 				421F6354195DD81600BA68FB /* libopencv_features2d.2.4.9.dylib in Frameworks */,
 				421F637D195DD81600BA68FB /* libopencv_video.2.4.9.dylib in Frameworks */,
@@ -207,6 +220,9 @@
 		42FD8F3D195951EC00705426 = {
 			isa = PBXGroup;
 			children = (
+				42E86342195FF76A00F52489 /* CoreFoundation.framework */,
+				42E86340195FF73400F52489 /* CoreAudio.framework */,
+				42E86339195FE1CD00F52489 /* CoreMIDI.framework */,
 				421F6315195DD81600BA68FB /* libopencv_calib3d.2.4.9.dylib */,
 				421F6316195DD81600BA68FB /* libopencv_calib3d.2.4.9.dylib */,
 				421F6317195DD81600BA68FB /* libopencv_calib3d.2.4.9.dylib */,
@@ -278,7 +294,10 @@
 		42FD8F48195951EC00705426 /* OpencvTest1 */ = {
 			isa = PBXGroup;
 			children = (
+				42E8633D195FF5F000F52489 /* RtMidi.cpp */,
+				42E8633E195FF5F000F52489 /* RtMidi.h */,
 				42FD8F49195951EC00705426 /* main.cpp */,
+				42E86344195FF9ED00F52489 /* InitMidi.h */,
 			);
 			path = OpencvTest1;
 			sourceTree = "<group>";
@@ -351,6 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42E8633F195FF5F000F52489 /* RtMidi.cpp in Sources */,
 				42FD8F4A195951EC00705426 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

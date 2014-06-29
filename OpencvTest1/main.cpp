@@ -3,6 +3,9 @@
 #include <iostream>
 #include <sstream>
 #include <opencv2/video/background_segm.hpp>
+#include "InitMidi.h"
+
+
 using namespace cv;
 using namespace std;
 
@@ -16,23 +19,27 @@ int ThreshLevel=20;
 int buf;
 
 
-void RectangleDetection (Mat obj, Mat color, Point a,Point b){
-    
+
+void RectangleDetection (Mat obj, Mat color, cv::Point a,cv::Point b){
     rectangle(color, a, b, Scalar(255,0,0));
     for(int x = a.x; x<b.x; x++){
         for(int y = a.y; y<b.y; y++){
-            Scalar colour = obj.at<uchar>(Point(x,y));
-            if(colour.val[0]>0){//detected
-                cout << "Triggered" << endl;
+            Scalar colour = obj.at<uchar>(cv::Point(x,y));
+            if(colour.val[0]>0){
                 rectangle(color, a, b, Scalar(0,0,255));
+                SendMidi(60, 90);
             }
-            else cout << "Nothing" << endl;
         }
     }
-    
 }
 
+
+
 int main() {
+    
+    //Initmidi();
+    
+    
     stream2.read(cameraFrame2);
     while (true) {
         
@@ -54,19 +61,17 @@ int main() {
                 stream2.release();
                 return 0;
                 break;
-            case 63232:
-                ThreshLevel++;
-                cout << ThreshLevel << endl;
-            case 63233:
-                ThreshLevel--;
-                cout << ThreshLevel << endl;
+//            case 63232://up
+//                Ho();
+//            case 63233://down
+//                ThreshLevel--;
+//                cout << ThreshLevel << endl;
             default:
                 break;
         }
         
-    }
+    } 
     return 0;
 }
-
 
 
