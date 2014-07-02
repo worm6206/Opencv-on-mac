@@ -591,7 +591,7 @@ void MidiInCore :: openPort( unsigned int portNumber, const std::string portName
   }
 
   CFRunLoopRunInMode( kCFRunLoopDefaultMode, 0, false );
-  unsigned int nSrc = MIDIGetNumberOfSources();
+  unsigned int nSrc = (int)MIDIGetNumberOfSources();
   if (nSrc < 1) {
     errorString_ = "MidiInCore::openPort: no MIDI input sources found!";
     error( RtMidiError::NO_DEVICES_FOUND, errorString_ );
